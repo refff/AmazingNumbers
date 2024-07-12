@@ -16,9 +16,8 @@ public class SingleNumber {
     }
 
     static boolean isBuzz(long usersNumber) {
-        long num = usersNumber;
-        long lastDigit = num % 10;
-        long remainedNumber = num / 10;
+        long lastDigit = usersNumber % 10;
+        long remainedNumber = usersNumber / 10;
         long diff = remainedNumber - (2 * lastDigit);
 
         return diff % 7 == 0 || lastDigit == 7;
