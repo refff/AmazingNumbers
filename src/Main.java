@@ -43,19 +43,21 @@ public class Main {
     }
 
     static void askMessage() {
-        System.out.print("\nEnter a request: ");
+        while(true){
+            System.out.print("\nEnter a request: ");
+            ArrayList<String> numbers = new ArrayList<>(List.of(scanner.nextLine().toUpperCase().split(" ")));
 
-        ArrayList<String> numbers = new ArrayList<>(List.of(scanner.nextLine().toUpperCase().split(" ")));
+            try {
+                usersNumber = Long.parseLong(numbers.getFirst());
+            } catch (NumberFormatException e) {
+                errorMessage();
+                continue;
+            }
+            if (usersNumber == 0)
+                break;
 
-        try {
-            usersNumber = Long.parseLong(numbers.getFirst());
-        } catch (NumberFormatException e) {
-            errorMessage();
-            askMessage();
-        }
-
-        if (usersNumber != 0)
             classSelection(numbers);
+        }
     }
 
     static void classSelection(ArrayList<String> numbers) {
@@ -87,6 +89,5 @@ public class Main {
                 }
             }
         }
-        askMessage();
     }
 }
